@@ -1,4 +1,3 @@
-// Array of nature facts with richer definitions
 const facts = [
   {
     title: "The Amazon Rainforest",

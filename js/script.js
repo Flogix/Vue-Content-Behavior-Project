@@ -1,7 +1,7 @@
 const appData = {
   data() {
     return {
-      facts, // from data.js
+      facts, 
       index: 0,
       isFlipped: false,
       menuOpen: false
@@ -17,5 +17,4 @@ const appData = {
   }
 };
 
-// monte l'app sur tout le body, pas seulement #app
 Vue.createApp(appData).mount("body");
