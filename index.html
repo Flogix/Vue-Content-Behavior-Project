@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NatureScope | Explore Earth's Wonders</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- 🌿 NAVIGATION BAR -->
+    <!-- 🌿 NAVIGATION BAR -->
+<nav class="navbar" id="nav" @click.stop>
+  <div class="nav-left">
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="NatureScope Logo" class="nav-logo" />
+    <span class="brand-name">NatureScope</span>
+  </div>
+
+  <button class="hamburger" @click="menuOpen = !menuOpen">
+    ☰
+  </button>
+
+  <ul class="nav-links" :class="{ open: menuOpen }">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Discover</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+
+    <!-- 🌄 HEADER -->
+    <header class="site-header">
+      <h1>Explore Earth's Wonders</h1>
+      <p class="tagline">Click to flip between the title and the definition of each natural marvel.</p>
+    </header>
+
+    <!-- 🧠 MAIN APP -->
+    <main id="app" class="main-content">
+      <section @click="isFlipped = !isFlipped" class="card">
+        <div class="image-container">
+          <img :src="facts[index].image" :alt="facts[index].title" />
+        </div>
+        <div class="text-container">
+          <h2 v-text="isFlipped ? '' : facts[index].title"></h2>
+          <p v-text="isFlipped ? facts[index].desc : ''"></p>
+        </div>
+      </section>
+
+      <div class="buttons">
+        <button @click="move(-1)">Previous</button>
+        <button @click="move(1)">Next</button>
+      </div>
+
+      <p class="progress-text">Fact {{ index + 1 }} of {{ facts.length }}</p>
+    </main>
+
+    <!-- 🦋 FOOTER -->
+    <footer>
+      &copy; <span id="year"></span> NatureScope | Created by Florian Giraud - ILAC & EFREI
+    </footer>
+  </div>
+
+  <!-- Vue & Scripts -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./data/data.js"></script>
+  <script src="./js/script.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
